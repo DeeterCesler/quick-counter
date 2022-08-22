@@ -1,30 +1,38 @@
 const el = document.getElementById('num')
+const goalValue = el.innerText
+console.log('goal')
+console.log(goalValue)
 
-setTimeout(() => {
-  const num = parseInt(el.innerText)
+// if no time attr given, defaul to 2 seconds
+const time = parseFloat(el.getAttribute('time')) || 2
+const milliseconds = time * 1000
 
-  console.log(num)
-  // 3000 milliseconds = 3 seconds
+const num = parseInt(el.innerText)
 
-  // if num > 3000, divided it by 3 thousand and increment it
-  // each time by that dividor (checking and making sure it doesn't go over 3k)
-  let incrementor = 0
-  if (num >= 3000) {
-    setInterval(() => {
-      //   console.log('hi')
-      if (incrementor < num) {
-        ++incrementor
-        el.value = incrementor
+// if num > time in milliseconds, divided it by # of milliseconds and increment it
+// each time by that divider (checking and making sure the times line up)
+let incrementor = 0
+el.innerText = incrementor
+if (num >= milliseconds) {
+  const chunkedIncrementor = parseInt(num / (time * 100))
+  setInterval(() => {
+    if (incrementor < num) {
+      incrementor += chunkedIncrementor
+      el.innerText = incrementor
+      if (incrementor > goalValue) {
+        //   console.log('test33')
+        //   console.log(el.innerText)
+        //   console.log(goalValue)
+        el.innerText = goalValue
       }
-    }, 1)
-  } else if (num < 3000) {
-    const incrementMilliseconds = 3000 / num
-    console.log('hi2')
-    setInterval(() => {
-      if (incrementor < num) {
-        ++incrementor
-        el.innerText = incrementor
-      }
-    }, incrementMilliseconds)
-  }
-}, 1000)
+    }
+  }, 10)
+} else if (num < milliseconds) {
+  const incrementMilliseconds = milliseconds / num
+  setInterval(() => {
+    if (incrementor < num) {
+      ++incrementor
+      el.innerText = incrementor
+    }
+  }, incrementMilliseconds)
+}
