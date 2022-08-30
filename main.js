@@ -20,24 +20,30 @@ el.innerText = incrementor
 const browserLimitation = 16
 const timeDivider = 1000 / browserLimitation
 
+// If the number is huge and needs to count quickly
 if (num >= milliseconds / browserLimitation) {
   const chunkedIncrementor = parseInt(num / (seconds * timeDivider))
-  setInterval(() => {
+  const counter = setInterval(() => {
     if (incrementor < num) {
       incrementor += chunkedIncrementor
       el.innerText = incrementor
-      if (incrementor > goalValue) {
+      if (incrementor >= goalValue) {
         el.innerText = goalValue
+        clearInterval(counter)
       }
     }
   }, browserLimitation)
 } else {
+  // If the number is tiny and it needs to count slowly
   const incrementMilliseconds = milliseconds / num
-  console.log(incrementMilliseconds)
-  setInterval(() => {
+  const counter = setInterval(() => {
     if (incrementor < num) {
       ++incrementor
       el.innerText = incrementor
+      if (incrementor >= goalValue) {
+        el.innerText = goalValue
+        clearInterval(counter)
+      }
     }
-  }, browserLimitation)
+  }, incrementMilliseconds)
 }
