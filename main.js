@@ -26,9 +26,9 @@ if (num >= milliseconds / browserLimitation) {
   const counter = setInterval(() => {
     if (incrementor < num) {
       incrementor += chunkedIncrementor
-      el.innerText = incrementor
+      el.innerText = Number(incrementor).toLocaleString()
       if (incrementor >= goalValue) {
-        el.innerText = goalValue
+        el.innerText = el.innerText = Number(goalValue).toLocaleString()
         clearInterval(counter)
       }
     }
@@ -39,9 +39,9 @@ if (num >= milliseconds / browserLimitation) {
   const counter = setInterval(() => {
     if (incrementor < num) {
       ++incrementor
-      el.innerText = incrementor
+      el.innerText = Number(incrementor).toLocaleString()
       if (incrementor >= goalValue) {
-        el.innerText = goalValue
+        el.innerText = Number(goalValue).toLocaleString()
         clearInterval(counter)
       }
     }
