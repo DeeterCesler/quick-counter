@@ -1,0 +1,31 @@
+{
+    "name": "quick-count",
+    "version": "0.0.1",
+    "main": "dist/Counter.js",
+    "author": "Deeter Cesler",
+    "license": "MIT",
+    "scripts": {
+      "build": "babel Counter.js -d dist"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/DeeterCesler/quick-counter.git"
+    },
+    "jsx": "react",
+    "bugs": {
+      "url": "https://github.com/DeeterCesler/quick-counter/issues"
+    },
+    "homepage": "https://github.com/DeeterCesler/quick-counter#readme",
+    "dependencies": {
+    },
+    "plugins": [
+      "@babel/plugin-transform-react-jsx"
+    ],
+    "devDependencies": {
+      "@babel/preset-react": "^7.16.7",
+      "@babel/cli": "^7.17.10",
+      "@babel/core": "^7.17.10",
+      "webpack": "^5.70.0"
+    }
+  }
+  
