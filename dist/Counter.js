@@ -20,7 +20,7 @@ export default function Counter(props) {
     // console.log(++renderCount)
     // if no time attr given, default to 2 seconds
 
-    const seconds = parseFloat(props.time) || 2;
+    const seconds = parseFloat(props.time) || 10;
     const milliseconds = seconds * 1000;
     /*
      *  If goalValue > time in milliseconds, divided it by # of milliseconds and increment it
